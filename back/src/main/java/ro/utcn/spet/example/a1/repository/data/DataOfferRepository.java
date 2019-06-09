@@ -7,7 +7,6 @@ import ro.utcn.spet.example.a1.repository.OfferRepository;
 public interface DataOfferRepository extends Repository<Offer, Integer>, OfferRepository {
     void delete(Offer offer);
 
-
     @Override
     default void remove(Offer offer) {
         delete(offer);

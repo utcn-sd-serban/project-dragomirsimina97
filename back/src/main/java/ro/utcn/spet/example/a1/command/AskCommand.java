@@ -1,14 +1,17 @@
 package ro.utcn.spet.example.a1.command;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import ro.utcn.spet.example.a1.dto.OfferDTO;
 import ro.utcn.spet.example.a1.entity.Offer;
 import ro.utcn.spet.example.a1.repository.OfferRepository;
+import ro.utcn.spet.example.a1.repository.RepositoryFactory;
 
+@Component
 @RequiredArgsConstructor
 public class AskCommand implements Command {
 
-    private final OfferRepository offerRepository;
+    private final RepositoryFactory repositoryFactory;
 
     @Override
     public OfferDTO execute(OfferDTO dto) {
@@ -19,6 +22,6 @@ public class AskCommand implements Command {
         offer.setAuthor(dto.getAuthor());
         offer.setCreationDate(dto.getCreationDate());
         offer.setAvailableDate(dto.getAvailableDate());
-        return OfferDTO.ofEntity(offerRepository.save(offer));
+        return OfferDTO.ofEntity(repositoryFactory.createOfferRepository().save(offer));
     }
 }

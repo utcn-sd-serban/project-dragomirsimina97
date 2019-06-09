@@ -1,7 +1,7 @@
 import React from "react";
 import Positano from '../photoo.jpg'
 import Dap from '../dap.jpg'
-const OffersList = ({ offers,onCreateOffer, onViewDetails ,searchOffersLocation,searchOffersTitle,onChangeToSearch}) => (
+const OffersList = ({ offers,onCreateOffer,onViewAuthorDetails, onViewDetails ,searchOffersLocation,searchOffersTitle,onChangeToSearch}) => (
     <div>
       <section className="hero is-link is-fullheight ">
       <img src={Positano} alt="Photo"/>
@@ -57,11 +57,13 @@ const OffersList = ({ offers,onCreateOffer, onViewDetails ,searchOffersLocation,
                             <td>{offer.author}</td>
                             <td>{offer.availableDate}</td>
                             <td><a onClick={() => onViewDetails(index)} class="button is-danger is-outlined">View Details</a></td> 
-                           
+                            <td><a onClick={() => onViewAuthorDetails(index)} class="button is-danger is-outlined">Author Details</a></td> 
                         </tr>
                     ))
                 }
             </tbody>
+              
+
     </div>
       
         

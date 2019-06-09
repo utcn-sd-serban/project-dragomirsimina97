@@ -13,9 +13,17 @@ export default class RestClient {
             }
         }).then(response => response.json());
     }
+    loadAllAuthors() {
+        return fetch(BASE_URL + "/authors", {
+            method: "GET",
+            headers: {
+                "Authorization": this.authorization
+            }
+        }).then(response => response.json());
+    }
 
     createOffer(author,title,description,location,creationDate,availableDate) {
-        return fetch(BASE_URL + "/questions", {
+        return fetch(BASE_URL + "/offers", {
             method: "POST",
             body: JSON.stringify({
                 author:author,

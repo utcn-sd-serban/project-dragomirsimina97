@@ -8,6 +8,9 @@ class OffersListPresenter {
     onViewDetails(index) {
         window.location.assign("#/offer-details/" + index);
     }
+    onViewAuthorDetails(index) {
+        window.location.assign("#/author-details/" + index);
+    }
     onFilterOffersTitle()
     {
         model.findByTitle();

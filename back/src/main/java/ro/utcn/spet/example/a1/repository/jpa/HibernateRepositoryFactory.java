@@ -3,7 +3,9 @@ package ro.utcn.spet.example.a1.repository.jpa;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
+import ro.utcn.spet.example.a1.dto.AuthorDTO;
 import ro.utcn.spet.example.a1.repository.*;
+import ro.utcn.spet.example.a1.repository.memory.AuthorRepository;
 
 import javax.persistence.EntityManager;
 
@@ -20,6 +22,10 @@ public class HibernateRepositoryFactory implements RepositoryFactory {
 	@Override
 	public OfferRepository createOfferRepository() {
 		return new HibernateOfferRepository(entityManager2);
+	}
+	@Override
+	public AuthorRepository createAuthorRepository() {
+		return new HibernateAuthorRepository(entityManager2);
 	}
 
 }

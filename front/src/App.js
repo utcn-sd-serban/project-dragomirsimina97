@@ -7,6 +7,7 @@ import SmartCreateOffer from './view/SmartCreateOffer';
 import SmartOfferDetails from './view/SmartOfferDetails';
 import SmartFilterByTitle from  './view/SmartFilterByTitle';
 import SmartFilterByLocation from  './view/SmartFilterByLocation';
+import SmartAuthorDetails from './view/SmartAuthorDetails';
 
 
 const App = () => (
@@ -18,6 +19,7 @@ const App = () => (
         <Route exact={true} component={SmartOfferDetails} path="/offer-details/:index" />
         <Route exact={true} component={SmartFilterByTitle} path="/filter-title-offer" />
         <Route exact={true} component={SmartFilterByLocation} path="/filter-location-offer" />
+        <Route exact={true} component={SmartAuthorDetails} path="/author-details/:index" />
        
         
        

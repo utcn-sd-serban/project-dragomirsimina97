@@ -8,6 +8,7 @@ class Model extends EventEmitter {
         super();
         this.state = {
             offers: [],
+            authors:[],
             newOffer: {
                id:"",
                 author:"",
@@ -16,6 +17,13 @@ class Model extends EventEmitter {
                location:"",
                 creationDate:"",
                 availableDate:"" 
+            },
+            newAuthor:{
+                id:"",
+                first_name:"",
+                last_name:"",
+                phone:"",
+                review:""
             },
             searchOffers: [],
             toSearch:""            
@@ -32,26 +40,29 @@ class Model extends EventEmitter {
             this.emit("change", this.state);
         })
     }
+    loadAuthor()
+    {
+        return client.loadAllAuthors().then(authors=> {
+            this.state = { 
+                ...this.state, 
+              authors:authors
+            };
+            this.emit("change", this.state);
+        })
+    }
 
     addOffer(author,title,description,location,creationDate,availableDate) {
 
         return client.createOffer(author,title,description,location,creationDate,availableDate)
-        .then(offer=> {this.state = {
+        .then(offer=> {
+            debugger;
+            this.state = {
             ...this.state,
-            currentId:++this.state.currentId,
-            offers: this.state.offers.concat([{
-             id:this.state.currentId,  
-              author:author,
-               title:title,
-               description:description,
-               location:location,
-               creationDate:creationDate,
-               availableDate:availableDate
-            }])
-        };
+            offers: this.state.offers.concat([offer])
+        };debugger;
         this.emit("change", this.state);
-       
-    })}
+        });
+    }
   
     changeNewOfferProperty(property, value) {
         this.state = {

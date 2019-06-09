@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ro.utcn.spet.example.a1.entity.*;
 import ro.utcn.spet.example.a1.repository.*;
 import ro.utcn.spet.example.a1.repository.memory.AdminRepository;
+import ro.utcn.spet.example.a1.repository.memory.AuthorRepository;
 
 @Component
 @RequiredArgsConstructor
@@ -29,10 +30,16 @@ public class UserssSeed implements CommandLineRunner {
 
 		OfferRepository offerRepository = factory.createOfferRepository();
 		if (offerRepository.findAll().isEmpty()) {
-			offerRepository.save(new Offer("Ana", "you can fix it by yourself","nicee","11/11/11","Ibiza","11/11/11"));
-			offerRepository.save(new Offer("miruna", "experience mountain moments","mountain air","Remetea","11/11/11","10/11/11"));
-			offerRepository.save(new Offer( "maria", "all day scuba","Life on beach","Bali","12/12/12","01/01/13"));
-			offerRepository.save(new Offer( "irina", "live in the heart of the city","City life","New York","13/12/13","01/01/14"));
+			offerRepository.save(new Offer("nicee", "you can fix it by yourself","Ana","Ibiza","11/11/11","11/11/11"));
+			offerRepository.save(new Offer("mountain air", "experience mountain moments","miruna","Remetea","11/11/11","10/11/11"));
+			offerRepository.save(new Offer("Life on beach" , "all day scuba","maria","Bali","12/12/12","01/01/13"));
+			offerRepository.save(new Offer( "City life", "live in the heart of the city","irina","New York","13/12/13","01/01/14"));
+		}
+		AuthorRepository auhtorRepository= factory.createAuthorRepository();
+		if ( auhtorRepository.findAll().isEmpty()) {
+			auhtorRepository.save(new Author("ana", "maria","09876543","10/10"));
+			auhtorRepository.save(new Author("costea", "ioana","24445345","9/10"));
+
 		}
 
 	}

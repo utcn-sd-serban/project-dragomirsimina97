@@ -95,7 +95,7 @@ public class OfferManagementService {
         offer.setLocation(location);
         offer.setCreationDate(creationDate);
         offer.setAvailableDate(availableDate);
-       // OfferRepository.save(offer);
+        repositoryFactory.createOfferRepository().save(offer);
     }
 
     @Transactional
